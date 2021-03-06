@@ -1,0 +1,37 @@
+﻿@model card_app.Models.ViewModels.ShowDeckCards
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h1>@Html.DisplayFor(model => model.Deck.DeckName)</h1>
+    <hr />
+    @Html.ActionLink("Add Card", "Create", "Cards", new { id = Model.Deck.DeckId }, null)
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var card in Model.DeckCards)
+            {
+            <tr scope="row">
+                <td>@Html.DisplayFor(m => card.CardQuestion) </td>
+                <td>@Html.DisplayFor(m => card.CardAnswer) </td>
+                <!-- Need to add null as the 5th argument to force ActionLink to use the correct overloard-->
+                <td>@Html.ActionLink("Edit", "Edit", "Cards", new { id = card.CardId}, null ) | @Html.ActionLink("Delete", "Delete", "Cards", new { id = card.CardId }, null)</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Change Deck Name", "Edit", new { id = Model.Deck.DeckId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

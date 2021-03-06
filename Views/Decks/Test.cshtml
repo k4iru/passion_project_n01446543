@@ -1,0 +1,21 @@
+﻿@model card_app.Models.ViewModels.TestView
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h1>Question: @Html.DisplayFor(m => Model.CorrectCard.CardQuestion)</h1>
+<table class="table">
+
+
+    <tr>
+        @foreach (var item in Model.AllCards)
+        {
+            <td>
+                @Html.ActionLink(item.CardAnswer, "TestCard", "Decks", new {GuessId = item.CardId, ActualId = Model.CorrectCard.CardId, DeckId = Model.CorrectCard.DeckID}, null)
+            </td>
+        }
+        </tr>
+
+
+</table>

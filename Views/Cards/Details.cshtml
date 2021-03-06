@@ -1,0 +1,42 @@
+﻿@model card_app.Models.Card
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Card</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Deck.DeckName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deck.DeckName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardAnswer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CardId }) |
+    @Html.ActionLink("Back to Deck", "Details", "Decks", new { id = Model.DeckId }, null)
+</p>
